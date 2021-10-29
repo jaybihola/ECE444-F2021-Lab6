@@ -1,5 +1,4 @@
 import pytest
-import os
 from pathlib import Path
 import json
 
@@ -86,16 +85,17 @@ def test_delete_message(client):
     data = json.loads(rv.data)
     assert data["status"] == 1
 
+
 def test_search(client):
     """Ensure search page is working"""
     response = client.get("/search/", content_type="html/text")
     assert response.status_code == 200
 
+
 def test_search_query(client):
     """Ensure search can find results"""
-    login(client, app.config['USERNAME'], app.config['PASSWORD'])
+    login(client, app.config["USERNAME"], app.config["PASSWORD"])
     data = dict(title="TEST", text="text input")
     client.post("/add", data=data, follow_redirects=True)
     rv = client.get("/search/?query=text", content_type="html/text")
     assert b"text input" in rv.data
-    
