@@ -35,7 +35,7 @@ app.config.from_object(__name__)
 # init sqlalchemy
 db = SQLAlchemy(app)
 
-from project import models
+from Project import models
 
 
 @app.route("/")

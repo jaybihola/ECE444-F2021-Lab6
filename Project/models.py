@@ -1,4 +1,4 @@
-from project.app import db
+from Project.app import db
 
 
 class Post(db.Model):
